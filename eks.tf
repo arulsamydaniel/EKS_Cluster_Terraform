@@ -4,6 +4,7 @@ module "eks" {
 
   cluster_name                   = local.name
   cluster_endpoint_public_access = true
+  cluster_endpoint_public_access_cidrs = ["157.51.0.0/16"] # Locked down to your network!
 
   cluster_addons = {
     coredns = {
@@ -30,7 +31,7 @@ module "eks" {
   }
 
   eks_managed_node_groups = {
-    vgs_worker_node = {
+    daniel_worker_node = { # Instructor name removed
       min_size     = 1
       max_size     = 2
       desired_size = 1
