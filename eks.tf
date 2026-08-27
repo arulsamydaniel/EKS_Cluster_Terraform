@@ -5,6 +5,15 @@ module "eks" {
   cluster_name                   = local.name
   cluster_endpoint_public_access = true
   cluster_endpoint_public_access_cidrs = ["157.51.0.0/16"] # Locked down to your network!
+manage_aws_auth_configmap = true
+
+  aws_auth_users = [
+    {
+      userarn  = "arn:aws:iam::361796581105:user/admin-user" # Make sure to paste the exact ARN from Step 1!
+      username = "admin-user"
+      groups   = ["system:masters"]
+    }
+  ]
 
   cluster_addons = {
     coredns = {
