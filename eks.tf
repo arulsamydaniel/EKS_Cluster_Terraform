@@ -4,7 +4,7 @@ module "eks" {
 
   cluster_name                   = local.name
   cluster_endpoint_public_access = true
-  cluster_endpoint_public_access_cidrs = ["157.51.0.0/16"] # Locked down to your network!
+  cluster_endpoint_public_access_cidrs = ["157.51.0.0/16", "18.60.81.103/32"] # Locked down to your network!
 manage_aws_auth_configmap = true
 
   aws_auth_users = [
