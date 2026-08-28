@@ -31,11 +31,11 @@ locals {
   }
 }
 data "aws_eks_cluster" "default" {
-  name = local.name
+  name = module.eks.cluster_name # Changed from local.name to force dependency
 }
 
 data "aws_eks_cluster_auth" "default" {
-  name = local.name
+  name = module.eks.cluster_name # Changed from local.name to force dependency
 }
 
 provider "kubernetes" {
